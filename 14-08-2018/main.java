@@ -32,6 +32,8 @@ class Main {
 		calc.soma(r);
 		r = calc.getResultado();
 		System.out.println("O resultado de "+calc.getA()+" + "+calc.getB()+" * "+calc.getC()+" é : "+r);
+		r = calc.menorQue(calc.maiorQue(a, b), c);
+		System.out.println("menorQue(maiorQue("+a+", "+b+"),"+c+") é:"+r);
 	}
 }
 
@@ -107,6 +109,27 @@ class Calculadora {
 	void soma() {
 		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
 																		// Tools | Templates.
+	}
+	
+	public double maiorQue (double x, double y) {
+		if (x>y) {
+			this.setResultado(x);
+		}else {
+			this.setResultado(y);
+		}
+		
+		return this.getResultado();
+	}
+
+	public double menorQue (double x, double y) {
+		if (x<y) {
+			this.setResultado(x);
+		}else {
+			this.setResultado(y);
+		}
+		
+		return this.getResultado();
+		
 	}
 }
 //--------------------------------------------------------------------------------------
