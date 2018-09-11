@@ -12,8 +12,23 @@ public class Main {
             
             int s = somatorio(x);
             int m = minimo(x);
-            System.out.println("S = "+s);
-            System.out.println("minimo = "+m);
+            System.out.println("Vetor -> S = "+s);
+            System.out.println("Vetor -> minimo = "+m);
+            
+            
+            int mat[][] = new int[3][2];
+            
+            int linha = mat.length;
+            int coluna = mat[0].length;
+            
+            
+            for(int i = 0; i<linha;i++){
+                for(int j = 0; j<coluna; j++){
+                    System.out.println("["+i+"]["+j+"] -> "+mat[i][j]);
+                }
+            }
+            
+            
 	}
         
         public static int somatorio(int w[]){
