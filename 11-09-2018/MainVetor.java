@@ -11,7 +11,9 @@ public class Main {
             x[4] = 2;
             
             int s = somatorio(x);
-            System.out.println("S = "+s+"->"+x.length);
+            int m = minimo(x);
+            System.out.println("S = "+s);
+            System.out.println("minimo = "+m);
 	}
         
         public static int somatorio(int w[]){
@@ -25,6 +27,19 @@ public class Main {
             }
             
             return s;
+        }
+        
+        public static int minimo(int w[]){
+            int n = w.length;
+            
+            int m = w[0];
+            
+            for (int i = 0; i<n; i++){
+                if (w[i]<m){
+                    m = w[i];
+                }
+            }
+            return m;
         }
 
 }
