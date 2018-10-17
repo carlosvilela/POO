@@ -4,7 +4,7 @@ import java.util.Scanner;
 //Classe: Menu                                        |
 //+---------------------------------------------------+
 
-public class Tela implements IPessoa {
+class Tela implements IPessoa {
 
 	@Override
 	public int escolherOpcao() {
