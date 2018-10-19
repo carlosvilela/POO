@@ -315,6 +315,7 @@ public class Main {
 	public static Scanner ler;
 	public static String nome, id, endereco;
 	public static PessoaFisica1 pF = new PessoaFisica1();
+	public static PessoaJuridica pJ = new PessoaJuridica();
 	
 	public static void main(String[] args) {
 
@@ -423,25 +424,98 @@ public class Main {
 				}
 
 				break;
+				
+				// Cadastrar PJ
+				case 4:
+					try {
+
+						
+						nome = null;
+						id = null;
+						endereco = null;
+
+						ler = new Scanner(System.in);
+						System.out.print("Insira o Nome: ");
+						nome = ler.nextLine();
+
+						ler = new Scanner(System.in);
+						System.out.print("Insira o CPF: ");
+						id = ler.nextLine();
+
+						ler = new Scanner(System.in);
+						System.out.print("Insira o Endereço: ");
+						endereco = ler.nextLine();
+
+						pJ.setNome(nome);
+						pJ.setCnpj(id);
+						pJ.setEndereco(endereco);
+
+
+					} catch (Exception e) {
+						System.out.println(e);
+					}
+
+					break;
+
+					// Excluir PJ
+					case 5:
+						
+						try {
+						
+						boolean flag;
+						flag = false;
+						ler = new Scanner(System.in);
+						id = null;
+						String s, S;
+						s = "s";
+						S = "S";
+						
+						System.out.print("Insira o CPF da pessoa que deseja excluir: ");
+						id = ler.nextLine();
+
+						for (int i = 0; i < (pF.size()); i++) {
+							
+							if(pJ.getCnpj(i).equals(id)) {
+								System.out.println("Foram identificados os seguintes dados:");
+								System.out.println(pJ.getPessoa(i));
+								System.out.print("Deseja excluir (s/n)? ");
+								
+								qt = null;
+								ler = new Scanner(System.in);
+								qt = ler.nextLine();
+								
+								if(s.equals(qt.charAt(0)) || S.equals(qt.charAt(0))) {
+									pJ.removerPessoa(i);
+									System.out.println("OBS: Exclusão realizada com sucesso.");
+									flag = true;
+								}else {
+									System.out.println("OBS: Exclusão cancelada.");
+								}
+						}
+						}
+						
+						if(!flag) {
+						System.out.println("ERRO: O CPF Não foi encontrado...");
+						}
+						
+						}catch(Exception e) {
+							System.out.println(e);
+						}
+						break;
+
+				// Listar PJ
+				case 6:
+
+					for (int i = 0; i < (pJ.size()); i++) {
+						System.out.println(i + " - " + pJ.getPessoa(i));
+					}
+
+					break;
+
 			}
 
 		} while (opt != 0);
 
-		/*
-		 * Tela telaInicial = new Tela(); PessoaFisica pFisica = new PessoaFisica();
-		 * PessoaJuridica pJuridica = new PessoaJuridica();
-		 * 
-		 * telaInicial.exibirMenu(enumEstilo.TITULO.ordinal(),
-		 * enumOpcao.CADASTRAR_PF.ordinal()); telaInicial.escolherOpcao();
-		 * 
-		 * pFisica.setNome("Carlos"); pFisica.setCpf("12345678909");
-		 * pFisica.setEndereco("Av. sem nome, 0009");
-		 * System.out.println(pFisica.imprimir());
-		 * 
-		 * pJuridica.setNome("Carlos"); pJuridica.setCnpj("12345678909000001");
-		 * pJuridica.setEndereco("Av. sem nome, 0009");
-		 * System.out.println(pJuridica.imprimir());
-		 */
 	}
 
 }
