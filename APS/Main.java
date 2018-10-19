@@ -208,12 +208,12 @@ abstract class Pessoa {
 		this.endereco = new ArrayList<String>();
 	}
 
-	public void setNome(int indice, String nome) {
-		this.nome.set(indice, nome);
+	public void setNome(String nome) {
+		this.nome.add(nome);
 	}
 
-	public void setEndereco(int indice, String endereco) {
-		this.endereco.set(indice, endereco);
+	public void setEndereco(String endereco) {
+		this.endereco.add(endereco);
 	}
 
 	public String getNome(int indice) {
@@ -222,6 +222,10 @@ abstract class Pessoa {
 
 	public String getEndereco(int indice) {
 		return this.endereco.get(indice);
+	}
+	
+	public int size () {
+		return this.nome.size();
 	}
 
 	public abstract String getPessoa(int indice);
@@ -242,8 +246,8 @@ class PessoaFisica1 extends Pessoa {
 		this.cpf = new ArrayList<String>();
 	}
 
-	public void setCpf(int indice, String cpf) {
-		this.cpf.set(indice, cpf);
+	public void setCpf(String cpf) {
+		this.cpf.add(cpf);
 	}
 
 	public String getCpf(int indice) {
@@ -277,8 +281,8 @@ class PessoaJuridica extends Pessoa {
 		this.cnpj = new ArrayList<String>();
 	}
 
-	public void setCnpj(int indice, String cnpj) {
-		this.cnpj.set(indice, cnpj);
+	public void setCnpj(String cnpj) {
+		this.cnpj.add(cnpj);
 	}
 
 	public String getCnpj(int indice) {
@@ -307,12 +311,14 @@ class PessoaJuridica extends Pessoa {
 
 public class Main {
 
+	public static Tela telaInicial = new Tela();
+	public static Scanner ler;
+	public static String nome, id, endereco;
+	public static PessoaFisica1 pF = new PessoaFisica1();
 	
 	public static void main(String[] args) {
 
-		Scanner ler;
-		Tela telaInicial = new Tela();
-		String nome, id, endereco;
+
 
 		Integer opt;
 		opt = null;
@@ -332,9 +338,11 @@ public class Main {
 			// Cadastrar PF
 			case 1:
 				try {
+
 					
 					nome = null;
 					id = null;
+					endereco = null;
 
 					ler = new Scanner(System.in);
 					System.out.print("Insira o Nome: ");
@@ -348,16 +356,12 @@ public class Main {
 					System.out.print("Insira o Endereço: ");
 					endereco = ler.nextLine();
 
-					PessoaFisica1 pF;
-					pF = new PessoaFisica1();
-
 					pF.setNome(nome);
 
-					pF.setCpf(cpf);
+					pF.setCpf(id);
 
 					pF.setEndereco(endereco);
 
-					adicionar(pF);
 
 				} catch (Exception e) {
 					System.out.println(e);
@@ -368,8 +372,8 @@ public class Main {
 			// Listar PF
 			case 3:
 
-				for (int i = 0; i <= (lista.size() - 1); i++) {
-					System.out.println(i + " - " + lista.get(i));
+				for (int i = 0; i < (pF.size()); i++) {
+					System.out.println(i + " - " + pF.getPessoa(i));
 				}
 
 				break;
