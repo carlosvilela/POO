@@ -320,8 +320,10 @@ public class Main {
 
 
 
+		String qt;
 		Integer opt;
 		opt = null;
+		qt = null;
 
 		do {
 
@@ -357,9 +359,7 @@ public class Main {
 					endereco = ler.nextLine();
 
 					pF.setNome(nome);
-
 					pF.setCpf(id);
-
 					pF.setEndereco(endereco);
 
 
@@ -368,6 +368,52 @@ public class Main {
 				}
 
 				break;
+
+				// Excluir PF
+				case 2:
+					
+					try {
+					
+					boolean flag;
+					flag = false;
+					ler = new Scanner(System.in);
+					id = null;
+					String s, S;
+					s = "s";
+					S = "S";
+					
+					System.out.print("Insira o CPF da pessoa que deseja excluir: ");
+					id = ler.nextLine();
+
+					for (int i = 0; i < (pF.size()); i++) {
+						
+						if(pF.getCpf(i).equals(id)) {
+							System.out.println("Foram identificados os seguintes dados:");
+							System.out.println(pF.getPessoa(i));
+							System.out.print("Deseja excluir (s/n)? ");
+							
+							qt = null;
+							ler = new Scanner(System.in);
+							qt = ler.nextLine();
+							
+							if(s.equals(qt.charAt(0)) || S.equals(qt.charAt(0))) {
+								pF.removerPessoa(i);
+								System.out.println("OBS: Exclusão realizada com sucesso.");
+								flag = true;
+							}else {
+								System.out.println("OBS: Exclusão cancelada.");
+							}
+					}
+					}
+					
+					if(!flag) {
+					System.out.println("ERRO: O CPF Não foi encontrado...");
+					}
+					
+					}catch(Exception e) {
+						System.out.println(e);
+					}
+					break;
 
 			// Listar PF
 			case 3:
