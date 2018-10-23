@@ -374,14 +374,9 @@ public class Main {
 				case 2:
 					
 					try {
-					
-					boolean flag;
-					flag = false;
+						
 					ler = new Scanner(System.in);
 					id = null;
-					String s, S;
-					s = "s";
-					S = "S";
 					
 					System.out.print("Insira o CPF da pessoa que deseja excluir: ");
 					id = ler.nextLine();
@@ -397,19 +392,28 @@ public class Main {
 							ler = new Scanner(System.in);
 							qt = ler.nextLine();
 							
-							if(s.equals(qt.charAt(0)) || S.equals(qt.charAt(0))) {
+							switch (qt.charAt(0)) {
+							
+							case ('S'):
+							case ('s'):
+								
 								pF.removerPessoa(i);
 								System.out.println("OBS: Exclusão realizada com sucesso.");
-								flag = true;
-							}else {
-								System.out.println("OBS: Exclusão cancelada.");
-							}
+							break;
+							
+							case ('N'):
+							case ('n'):
+							
+								System.out.println("OBS: Você optou por não realizar a exclusão.");
+								
+							break;
+								
+							default:
+								System.out.println("OBS: Não foi possivel realizar a exclusão, tente novamente.");
 					}
+						}
 					}
 					
-					if(!flag) {
-					System.out.println("ERRO: O CPF Não foi encontrado...");
-					}
 					
 					}catch(Exception e) {
 						System.out.println(e);
@@ -462,18 +466,13 @@ public class Main {
 						
 						try {
 						
-						boolean flag;
-						flag = false;
 						ler = new Scanner(System.in);
 						id = null;
-						String s, S;
-						s = "s";
-						S = "S";
 						
-						System.out.print("Insira o CPF da pessoa que deseja excluir: ");
+						System.out.print("Insira o CNPJ da pessoa que deseja excluir: ");
 						id = ler.nextLine();
 
-						for (int i = 0; i < (pF.size()); i++) {
+						for (int i = 0; i < (pJ.size()); i++) {
 							
 							if(pJ.getCnpj(i).equals(id)) {
 								System.out.println("Foram identificados os seguintes dados:");
@@ -484,19 +483,28 @@ public class Main {
 								ler = new Scanner(System.in);
 								qt = ler.nextLine();
 								
-								if(s.equals(qt.charAt(0)) || S.equals(qt.charAt(0))) {
+								switch (qt.charAt(0)) {
+								
+								case ('S'):
+								case ('s'):
+									
 									pJ.removerPessoa(i);
 									System.out.println("OBS: Exclusão realizada com sucesso.");
-									flag = true;
-								}else {
-									System.out.println("OBS: Exclusão cancelada.");
-								}
+								break;
+								
+								case ('N'):
+								case ('n'):
+								
+									System.out.println("OBS: Você optou por não realizar a exclusão.");
+									
+								break;
+									
+								default:
+									System.out.println("OBS: Não foi possivel realizar a exclusão, tente novamente.");
 						}
+							}
 						}
 						
-						if(!flag) {
-						System.out.println("ERRO: O CPF Não foi encontrado...");
-						}
 						
 						}catch(Exception e) {
 							System.out.println(e);
